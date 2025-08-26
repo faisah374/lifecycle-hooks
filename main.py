@@ -7,9 +7,9 @@ Original file is located at
     https://colab.research.google.com/drive/1mJDwc0Nh7FB8qy2DnjtpFK95Jrp9jsvp
 """
 
-!pip install -Uq openai-agents
-import nest_asyncio
-nest_asyncio.apply()
+# !pip install -Uq openai-agents
+import asyncio
+# nest_asyncio.apply()
 from agents import(
     Agent,
     Runner,
@@ -18,7 +18,7 @@ from agents import(
      set_default_openai_client, set_tracing_disabled,
     RunContextWrapper, AgentHooks, Runner, Tool, function_tool
 )
-from google.colab import userdata
+# from google.colab import userdata
 import os
 import asyncio
 import random
@@ -29,7 +29,7 @@ from pydantic import BaseModel
 
 
 
-gemini_api_key = userdata.get("GEMINI_API_KEY")
+gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 external_client=AsyncOpenAI(
     api_key=gemini_api_key,
